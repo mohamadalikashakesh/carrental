@@ -1,27 +1,34 @@
-# You are building a system for a . The system should manage different types of vehicles and allow customers to rent them.
+class Vehicle:
+  
+  rental_days=0
+  
+  def __init__(self, brand, model, year):
+    self.brand = brand
+    self.model = model
+    self.year = year
+    self.__pricepd = 0
 
-# - Attributes: brand, model, year, rental_price_per_day
-# - Methods:
+  def getPrice(self):
+    return self.__pricepd
+  
+  def setPrice(self, newPrice):
+    self.__pricepd = newPrice
 
-#     display_info(): Prints vehicle details.
-#     calculate_rental_cost(days): Returns the rental cost for a given number of days.(inherits from Vehicle):
-#     Additional attribute: seating_capacity
-#     Override display_info() to include seating capacity. (inherits from Vehicle)
-#     Additional attribute: engine_capacity
-#     Override display_info() to include engine capacity.
-#     Make rental_price_per_day a private attribute.
-#     Provide a setter and getter method for rental_price_per_day.
-#     Create a function show_vehicle_info(vehicle) that takes a Vehicle object and calls display_info(), demonstrating polymorphism.
-#     Create instances of Car and Bike with sample data.
-#     Display their details using display_info().
-#     Calculate rental costs for a given number of days.
-#     Modify rental prices using setter methods and display the updated price.
+  def display_info(self):
+    return f"{self.brand} {self.model}, Year: {self.year}, Rental Price: {self.__pricepd}$/day"
 
-# Expected Output:
-# Car: Toyota Corolla, Year: 2020, Seats: 5, Rental Price: $50/day
-# Bike: Yamaha R1, Year: 2019, Engine: 998cc, Rental Price: $30/day
+# class calculate_rental_cost(Vehicle):
+#     def __init__(self, brand, model, year, rentingdays):
+#         super().__init__(brand, model,year)  # Call parent constructor
+#         self.rentingdays = rentingdays  # New attribute
 
-# Rental cost for Toyota Corolla for 3 days: $150
-# Rental cost for Yamaha R1 for 5 days: $150
+#     def rental_days(self):
+#         return {self.rentingdays}
+    
 
-# Updated rental price for Toyota Corolla: $55/day
+vehicle1 = Vehicle("Bmw","E70","2009")
+vehicle2 = Vehicle("Mercedes","E63","2012")
+vehicle1.setPrice(70)
+vehicle2.setPrice(100)
+print(vehicle1.display_info())
+print(vehicle2.display_info())

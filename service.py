@@ -26,9 +26,10 @@ class Car(Vehicle):
     super().__init__(brand, model, year)
 
   def display_info(self):
-    super().display_info()
-    return f"{self.brand} {self.model}, Year: {self.year}, Seats: {self.seating_capacity}, Rental Price: {self.__pricepd}$/day"
-
+    parent_output = super().display_info()
+    child_output = f", Seats : {self.seating_capacity}"
+    return f"{parent_output}{child_output}"
+  
 class Bike(Vehicle):
 
   def __init__(self, brand, model, year, engine_capacity):
@@ -36,8 +37,9 @@ class Bike(Vehicle):
     super().__init__(brand, model, year)
 
   def display_info(self):
-    super().display_info()
-    return f"Engine : {self.engine_capacity}"
+    parent_output = super().display_info()
+    child_output = f", Engine : {self.engine_capacity}"
+    return f"{parent_output}{child_output}"
 
 
 vehicle1 = Car("Bmw","E70","2009","5")
@@ -49,13 +51,11 @@ vehicle2.setPrice(100)
 vehicle3.setPrice(50)
 
 print("\n")
-#print(vehicle1.display_info())
+print(vehicle1.display_info())
 print(vehicle2.display_info())
 print(vehicle3.display_info())
-
 print("\n")
 print(f"Rental cost for {vehicle1.brand} {vehicle1.model} for 3 days: ${vehicle1.calculate_rental_cost(3)}")
 print(f"Rental cost for {vehicle2.brand} {vehicle2.model} for 5 days: ${vehicle2.calculate_rental_cost(5)}")
-print(f"Rental cost for {vehicle3.brand} {vehicle3.model} for 10 days: ${vehicle3.calculate_rental_cost(10)}")
-
+print(f"Rental cost for {vehicle3.brand} {vehicle3.model} for 9 days: ${vehicle3.calculate_rental_cost(9)}")
 print("\n")

@@ -8,7 +8,7 @@ class Vehicle:
 
   def getPrice(self):
     return self.__pricepd
-  
+
   def setPrice(self, newPrice):
     self.__pricepd = newPrice
 
@@ -18,6 +18,9 @@ class Vehicle:
   def calculate_rental_cost(self, days):
     price = self.getPrice()
     return int(days * price)
+  
+  def update_price(self, updatedprice):
+    self.setPrice(updatedprice)
   
 class Car(Vehicle):
 
@@ -59,3 +62,6 @@ print(f"Rental cost for {vehicle1.brand} {vehicle1.model} for 3 days: ${vehicle1
 print(f"Rental cost for {vehicle2.brand} {vehicle2.model} for 5 days: ${vehicle2.calculate_rental_cost(5)}")
 print(f"Rental cost for {vehicle3.brand} {vehicle3.model} for 9 days: ${vehicle3.calculate_rental_cost(9)}")
 print("\n")
+
+vehicle1.update_price("80")
+print(f"Updated rental price for {vehicle1.brand} {vehicle1.model}: ${vehicle1.getPrice()}/day")
